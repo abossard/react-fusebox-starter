@@ -2,7 +2,8 @@ import { src, task, exec, context } from "fuse-box/sparky"
 import { FuseBox, QuantumPlugin } from "fuse-box";
 
 context({
-  baseConfigureServerBundle: (fuse: FuseBox) =>
+
+  baseConfigureServerBundle: (fuse: FuseBox) => 
     fuse.bundle("server")
       .target("server@es2017")
       .instructions("> [server/server.ts]")
@@ -56,11 +57,12 @@ task("default", async context => {
 
 
 task("dist", async context => {
-
-  const fuse = context.getConfig(true);
-  context.baseConfigureServerBundle(fuse)
-  context.baseConfigureClientBundle(fuse)
-  await fuse.run();
+  const fuseApp = context.getConfig(true);
+  context.baseConfigureClientBundle(fuseApp)
+  await fuseApp.run();
+  const fuseServer = context.getConfig(false);
+  context.baseConfigureServerBundle(fuseServer)
+  await fuseServer.run();
 });
 
 

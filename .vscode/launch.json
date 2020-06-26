@@ -1,0 +1,54 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Debug Fuse",
+			"type": "node",
+			"request": "launch",
+			"runtimeExecutable": "node",
+			"runtimeArgs": [
+				"--nolazy",
+				"-r",
+				"ts-node/register/transpile-only"
+			],
+			"args": [
+				"fuse.ts"
+			],
+			"cwd": "${workspaceRoot}",
+			"internalConsoleOptions": "openOnSessionStart",
+			"skipFiles": [
+				"<node_internals>/**",
+				"node_modules/**"
+			]
+		},
+		{
+			"type": "chrome",
+			"request": "launch",
+			"name": "Launch Chrome",
+			"url": "http://localhost:3000",
+			"webRoot": "${workspaceRoot}",
+			"sourceMapPathOverrides": {
+				"/*": "${webRoot}/*",
+			}
+		},
+		{
+			"type": "node",
+			"request": "attach",
+			"name": "Attach Server",
+			"port": 9031,
+			"restart": true,
+			"sourceMapPathOverrides": {
+				"/*": "${workspaceRoot}/*"
+			}
+		}
+	],
+	"compounds": [
+		{
+			"name": "Start Both",
+			"configurations": [
+				"Attach Server",
+				"Launch Chrome"
+			]
+		}
+	]
+}
