@@ -26,13 +26,15 @@ describe("A List, when rendered, ", ()=> {
     })
 })
 
-describe("A add function, when rendered", () => {
-    it("Should display an empty form", () => {
+describe("A Item add, when rendered", () => {
+    it("Should display an empty form with a button", () => {
         const callback = jest.fn()
 
         render(<ListAdder onAdd={callback}></ListAdder>)
-
-        expect(screen.getByRole("textbox")).toBeTruthy()
+        const input = screen.getByRole("textbox") as HTMLInputElement
+        expect(input).toBeTruthy() 
+        expect(input.value).toEqual("")
+        expect(screen.getByRole("button")).toBeTruthy()
     })
     
     it("should call the callback on submit", () => {

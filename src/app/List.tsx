@@ -14,7 +14,7 @@ const ListAdder = (props: ListAdderProps) => {
     return <div>
         <form onSubmit={handleSubmit}>
             <label htmlFor="item-name"></label>
-            <input name="item-name" type="text" onChange={ev => setItemName(ev.target.value)} />
+            <input name="item-name" type="text" value={itemName} onChange={ev => setItemName(ev.target.value)} />
             <input type="submit" value="Add Item" />
         </form>
     </div>
