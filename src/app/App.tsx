@@ -13,17 +13,23 @@ const makeSomeSpacePlease = style({
 });
 
 const App = () => {
-    const [items, setItems] = useState([] as string[]);
-
-    const addItem = (text: string) => {
-        setItems([...items, text])
-    }
     return (
         <div className={mainStyle}>
             <h1>Hello, World!</h1>
-            <List items={items} onAdd={addItem}></List>
         </div>
     );
 }
 
 export { App };
+
+
+/*
+    const [items, setItems] = useState([] as string[]);
+
+    const listProps = {
+        items,
+        onAdd: (text: string) => {
+            setItems([...items, text])
+        }
+    }
+*/

@@ -14,16 +14,7 @@ describe("A List, when rendered, ", ()=> {
 
         expect(screen.getByRole('listitem')).toBeTruthy()
     })
-    it("without items, it should display a empty message.", () => {
-        const props = {
-            items: [],
-            onAdd: jest.fn()
-        }
-
-        render(<List {...props}></List>)
-        
-        expect(screen.getByRole('heading', {name: /empty/i })).toBeTruthy()
-    })
+    // expect(screen.getByRole('heading', {name: /empty/i })).toBeTruthy()
 })
 
 describe("A Item add, when rendered", () => {
@@ -50,3 +41,16 @@ describe("A Item add, when rendered", () => {
         expect(callback).toBeCalledWith(expect.stringMatching(testInput))
     })
 })
+
+/*
+it("without items, it should display a empty message.", () => {
+        const props = {
+            items: [],
+            onAdd: jest.fn()
+        }
+
+        render(<List {...props}></List>)
+        
+        expect(screen.getByRole('heading', {name: /empty/i })).toBeTruthy()
+    })
+    */

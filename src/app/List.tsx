@@ -20,12 +20,13 @@ const ListAdder = (props: ListAdderProps) => {
     </div>
 }
 
-const ListDisplay = (props: ListItemsProps) => (props.items.length > 0) ? <ul>
+const ListDisplay = (props: ListItemsProps) => <ul>
     {props.items.map((item, index) => <li key={item + index}>{item}</li>)}
-</ul> : <h3>Empty List</h3>
+</ul>
 
 const List = (props: ListItemsProps & ListAdderProps) => {
     return <div>
+        <h3>My current backlog</h3>
         <ListDisplay items={props.items}></ListDisplay>
         <ListAdder onAdd={props.onAdd}></ListAdder>
     </div>
