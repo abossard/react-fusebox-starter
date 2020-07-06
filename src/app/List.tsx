@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 type ListItemsProps = { items: string[] }
 type ListAdderProps = { onAdd: (text: string) => void }
-
+const ItemNameValidator = (name: string) => true
 const ListAdder = (props: ListAdderProps) => {
     const [itemName, setItemName] = useState("")
 
@@ -25,7 +25,10 @@ const ListDisplay = (props: ListItemsProps) => (props.items.length > 0) ? <ul>
 </ul> : <h3>Empty List</h3>
 
 const List = (props: ListItemsProps & ListAdderProps) => {
-    return <ListDisplay items={props.items}></ListDisplay>
+    return <div>
+        <ListDisplay items={props.items}></ListDisplay>
+        <ListAdder onAdd={props.onAdd}></ListAdder>
+    </div>
 }
 
 

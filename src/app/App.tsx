@@ -1,6 +1,7 @@
 import * as React from "react";
-import {style} from "typestyle";
+import { style } from "typestyle";
 import { List } from './List';
+import { useState } from 'react';
 
 const mainStyle = style({
     color: "green",
@@ -11,18 +12,18 @@ const makeSomeSpacePlease = style({
     paddingTop: 20,
 });
 
-class App extends React.Component {
-    public render() {
-        const debug = (text:string) => {
-            console.log(text);
-        }
-        return (
-            <div className={mainStyle}>
-                <h1>Hello, World!</h1>
-                <List items={["Item 1"]} onAdd={debug}></List>
-            </div>
-        );
+const App = () => {
+    const [items, setItems] = useState([] as string[]);
+
+    const addItem = (text: string) => {
+        setItems([...items, text])
     }
+    return (
+        <div className={mainStyle}>
+            <h1>Hello, World!</h1>
+            <List items={items} onAdd={addItem}></List>
+        </div>
+    );
 }
 
-export {App};
+export { App };
