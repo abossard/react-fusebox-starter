@@ -19,7 +19,7 @@ class App extends React.Component {
         return (
             <div className={mainStyle}>
                 <h1>Hello, World!</h1>
-                <List items={[]} onAdd={debug}></List>
+                <List items={["Item 1"]} onAdd={debug}></List>
             </div>
         );
     }
