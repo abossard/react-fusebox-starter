@@ -13,9 +13,18 @@ const makeSomeSpacePlease = style({
 });
 
 const App = () => {
+    const [items, setItems] = useState([] as string[])
+    const listProps = {
+        items,
+        onAdd: (newItemText:string) => {
+            setItems([...items, newItemText])
+        }
+    }
+
     return (
         <div className={mainStyle}>
             <h1>Hello, World!</h1>
+            <List {...listProps}></List>
         </div>
     );
 }

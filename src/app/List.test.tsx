@@ -16,7 +16,18 @@ describe("A List, when rendered, ", ()=> {
 
         expect(screen.getByRole('listitem')).toBeTruthy()
     })
-    // expect(screen.getByRole('heading', {name: /empty/i })).toBeTruthy()
+
+    it("should display and information when empty.", () => {
+        const props = {
+            items: [],
+            onAdd: jest.fn()
+        }
+
+        render(<List {...props}></List>)
+        
+        expect(screen.getByRole('heading', {name: /empty/i })).toBeTruthy()
+    })
+
 })
 
 describe("A Item add, when rendered", () => {
@@ -39,9 +50,10 @@ describe("A Item add, when rendered", () => {
 
         userEvent.type(input, testInput)
 
-        fireEvent.submit(screen.getByRole('button'))
-
         expect(input.value).toBe(testInput);
+        userEvent.click(screen.getByRole('button'))
+        expect(input.value).toBe("");
+        
         expect(callback).toBeCalledWith(expect.stringMatching(testInput))
     })
 })
