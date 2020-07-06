@@ -1,5 +1,6 @@
 import * as React from "react";
 import {style} from "typestyle";
+import { List } from './List';
 
 const mainStyle = style({
     color: "green",
@@ -12,29 +13,15 @@ const makeSomeSpacePlease = style({
 
 class App extends React.Component {
     public render() {
+        const debug = (text:string) => {
+            console.log(text);
+        }
         return (
             <div className={mainStyle}>
-                
-                <h1>look at my <em>xyz</em></h1>
-                <hr/>
-                <dl>
-                    <dt className={makeSomeSpacePlease}><h3>Async state example</h3></dt>
-                    <dd>
-                        <p>
-                            Count 5
-                        </p>
-                        <button onClick={this.onReset}>
-                            Hit me
-                        </button>
-                    </dd>
-                </dl>
-                
+                <h1>Hello, World!</h1>
+                <List items={[]} onAdd={debug}></List>
             </div>
         );
-    }
-
-    public onReset = () => {
-        console.log("s");
     }
 }
 

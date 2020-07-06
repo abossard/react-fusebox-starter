@@ -2,6 +2,8 @@
   "compilerOptions": {
     "module": "CommonJS",
     "target": "ES2017",
+    "sourceMap": true,
+    "inlineSources": true,
     "jsx": "react",
     "baseUrl": ".",
     "importHelpers": true,
