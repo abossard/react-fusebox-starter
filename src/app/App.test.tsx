@@ -7,8 +7,8 @@ describe("The App component, when loaded, ", () => {
     it("says Hello, World", () => {
         const titleMatch = { name: /hello, world/i }
 
-        render(<App/>)
-        
+        const {debug} = render(<App/>)
+
         expect(screen.getByRole('heading', titleMatch)).toBeTruthy()
     })
 })

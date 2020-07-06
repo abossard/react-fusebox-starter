@@ -1,5 +1,7 @@
 import React from "react"
 import { render, screen, fireEvent } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
 import { List, ListAdder } from './List'
 
 
@@ -34,23 +36,12 @@ describe("A Item add, when rendered", () => {
 
         render(<ListAdder onAdd={callback}></ListAdder>)
         const input = screen.getByRole('textbox') as HTMLInputElement
-        fireEvent.change(input, {target: {value: testInput}})
+
+        userEvent.type(input, testInput)
+
         fireEvent.submit(screen.getByRole('button'))
 
         expect(input.value).toBe(testInput);
         expect(callback).toBeCalledWith(expect.stringMatching(testInput))
     })
 })
-
-/*
-it("without items, it should display a empty message.", () => {
-        const props = {
-            items: [],
-            onAdd: jest.fn()
-        }
-
-        render(<List {...props}></List>)
-        
-        expect(screen.getByRole('heading', {name: /empty/i })).toBeTruthy()
-    })
-    */
