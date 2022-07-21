@@ -21,7 +21,7 @@
     "koa-static": "^5.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "terser": "^4.8.0",
+    "terser": "^4.8.1",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.5",
     "typestyle": "^2.1.0",
